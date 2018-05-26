@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_fragment"
+    android:label="Main Fragment"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.miandroidchallenge.ucoppp.io18test.ui.splash.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment">
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:clearTask="true"
+            app:destination="@id/mainFragment"
+            app:launchDocument="false"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.miandroidchallenge.ucoppp.io18test.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" />
+    <fragment
+        android:id="@+id/signInFormFragment"
+        android:name="com.miandroidchallenge.ucoppp.io18test.ui.signinform.SignInFormFragment"
+        android:label="sign_in_form_fragment"
+        tools:layout="@layout/sign_in_form_fragment" />
+</navigation>
