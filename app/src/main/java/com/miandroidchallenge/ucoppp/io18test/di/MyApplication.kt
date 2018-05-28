@@ -9,6 +9,7 @@ import dagger.android.HasActivityInjector
 import dagger.android.HasFragmentInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
+import android.support.v4.app.Fragment as SupportFragment
 
 class MyApplication : Application(), HasActivityInjector, HasFragmentInjector, HasSupportFragmentInjector {
 
@@ -19,25 +20,24 @@ class MyApplication : Application(), HasActivityInjector, HasFragmentInjector, H
     lateinit var frameworkFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     @Inject
-    lateinit var frameworkSupportFragmentInjector: DispatchingAndroidInjector<android.support.v4.app.Fragment>
+    lateinit var frameworkSupportFragmentInjector: DispatchingAndroidInjector<SupportFragment>
 
-    private val appComponent: AppComponent by lazy {
+    val appComponent: AppComponent by lazy {
         DaggerAppComponent
                 .builder()
-                .appModule(AppModule(mApplication = this))
+                .appModule(AppModule(this))
                 .build()
     }
 
     override fun onCreate() {
         super.onCreate()
-        appComponent.inject(application = this)
+        appComponent.inject(this)
     }
 
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
+    override fun activityInjector(): DispatchingAndroidInjector<Activity> = dispatchingAndroidInjector
 
-    override fun fragmentInjector(): AndroidInjector<Fragment> = frameworkFragmentInjector
+    override fun fragmentInjector(): DispatchingAndroidInjector<Fragment> = frameworkFragmentInjector
 
-    override fun supportFragmentInjector(): AndroidInjector<android.support.v4.app.Fragment> =
-            frameworkSupportFragmentInjector
+    override fun supportFragmentInjector(): DispatchingAndroidInjector<SupportFragment> = frameworkSupportFragmentInjector
 
 }
