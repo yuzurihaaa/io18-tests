@@ -35,15 +35,17 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
         testLiveData.postValue(sharedPreferences.getString("test", ""))
 
         Observable.fromCallable({
-            userDao.insertUsers(User(
-                    name = "Yusuf",
-                    age = 25
+            Array(1000, { i -> i + 0 }).map {
+                userDao.insertUsers(User(
+                        name = "Name $it",
+                        age = 25
 
-            ))
+                ))
+            }
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ _ ->
-
+                    Log.e("name", "sucess")
                 }, { error ->
                     print(error)
                 })
@@ -57,7 +59,7 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
         }).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    Log.e("name", it[0].name)
+                    Log.e("name", it[200].name)
                 }, { _ ->
 
                 })
