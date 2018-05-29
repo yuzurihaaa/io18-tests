@@ -3,7 +3,7 @@ package com.miandroidchallenge.ucoppp.io18test.di
 import android.app.Activity
 import android.app.Application
 import android.app.Fragment
-import dagger.android.AndroidInjector
+import com.miandroidchallenge.ucoppp.io18test.modules.UserModule
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import dagger.android.HasFragmentInjector
@@ -26,6 +26,7 @@ class MyApplication : Application(), HasActivityInjector, HasFragmentInjector, H
         DaggerAppComponent
                 .builder()
                 .appModule(AppModule(this))
+                .userModule(UserModule(this))
                 .build()
     }
 

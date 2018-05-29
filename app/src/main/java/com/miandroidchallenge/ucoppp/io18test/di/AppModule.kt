@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
 import javax.inject.Singleton
 
 
@@ -18,6 +17,6 @@ internal class AppModule(private val application: Application) {
 
     @Provides
     @Singleton
-    fun provideSharedPreference() : SharedPreferences =
+    fun provideSharedPreference(): SharedPreferences =
             provideApplication().getSharedPreferences("signIn", Context.MODE_PRIVATE)
 }
