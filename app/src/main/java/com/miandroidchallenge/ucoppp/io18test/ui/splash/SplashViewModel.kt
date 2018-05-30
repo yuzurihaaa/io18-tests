@@ -34,21 +34,21 @@ class SplashViewModel(application: Application) : AndroidViewModel(application) 
 
         testLiveData.postValue(sharedPreferences.getString("test", ""))
 
-        Observable.fromCallable({
-            Array(1000, { i -> i + 0 }).map {
-                userDao.insertUsers(User(
-                        name = "Name $it",
-                        age = 25
-
-                ))
-            }
-        }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ _ ->
-                    Log.e("name", "sucess")
-                }, { error ->
-                    print(error)
-                })
+//        Observable.fromCallable({
+//            Array(1000, { i -> i + 0 }).map {
+//                userDao.insertUsers(User(
+//                        name = "Name $it",
+//                        age = 25
+//
+//                ))
+//            }
+//        }).subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe({ _ ->
+//                    Log.e("name", "sucess")
+//                }, { error ->
+//                    print(error)
+//                })
 
     }
 

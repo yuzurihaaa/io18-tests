@@ -4,6 +4,11 @@ ext {
     dagger_version = '2.14.1'
     room_version = '1.1.1-rc1'
     rx_version = '2.1.12'
+    retrofit_version = '2.4.0'
+    okio = '1.14.0'
+    gson = '2.8.2'
+    okhttp_version = '3.10.0'
+    gson_converter = '2.3.0'
 }
 
 buildscript {
@@ -13,7 +18,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha15'
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha16'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -26,6 +31,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url = 'https://jitpack.io' }
     }
 }
 

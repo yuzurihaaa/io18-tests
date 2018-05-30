@@ -3,6 +3,7 @@ package com.miandroidchallenge.ucoppp.io18test.di
 import android.app.Activity
 import android.app.Application
 import android.app.Fragment
+import com.miandroidchallenge.ucoppp.io18test.modules.ApiModule
 import com.miandroidchallenge.ucoppp.io18test.modules.UserModule
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -27,6 +28,7 @@ class MyApplication : Application(), HasActivityInjector, HasFragmentInjector, H
                 .builder()
                 .appModule(AppModule(this))
                 .userModule(UserModule(this))
+                .apiModule(ApiModule("http://api.openweathermap.org/", this))
                 .build()
     }
 

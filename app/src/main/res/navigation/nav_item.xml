@@ -13,36 +13,11 @@
         tools:layout="@layout/splash_fragment">
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"
-            app:clearTask="true"
-            app:destination="@id/signInFormFragment"
-            app:launchDocument="false"
-            app:launchSingleTop="true"
-            app:popUpToInclusive="false" />
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.miandroidchallenge.ucoppp.io18test.ui.main.MainFragment"
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" />
-    <fragment
-        android:id="@+id/signInFormFragment"
-        android:name="com.miandroidchallenge.ucoppp.io18test.ui.signinform.SignInFormFragment"
-        android:label="sign_in_form_fragment"
-        tools:layout="@layout/sign_in_form_fragment" >
-        <action
-            android:id="@+id/action_signInFormFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_signInFormFragment_to_userDetailsFragment"
-            app:destination="@id/userDetailsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userDetailsFragment"
-        android:name="com.miandroidchallenge.ucoppp.io18test.ui.userdetails.UserDetailsFragment"
-        android:label="user_details_fragment"
-        tools:layout="@layout/user_details_fragment">
-        <action
-            android:id="@+id/action_userDetailsFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
 </navigation>
