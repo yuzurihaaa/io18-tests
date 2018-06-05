@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.LinearInterpolator
+import android.view.animation.DecelerateInterpolator
 import com.github.matteobattilana.weather.PrecipType
 import com.github.matteobattilana.weather.WeatherViewSensorEventListener
 import com.miandroidchallenge.ucoppp.io18test.R
@@ -115,7 +115,7 @@ class MainFragment : Fragment(), ComponentCallbacks2 {
                 view[pos].translationX = axisX
                 view[pos].translationY = axisY
             }
-            valueAnimators[pos].interpolator = LinearInterpolator()
+            valueAnimators[pos].interpolator = DecelerateInterpolator()
             valueAnimators[pos].duration = 1000
             if (reverse) valueAnimators[pos].reverse() else valueAnimators[pos].start()
 
