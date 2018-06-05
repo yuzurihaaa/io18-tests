@@ -1,10 +1,12 @@
 package com.miandroidchallenge.ucoppp.io18test.util
 
 import android.app.Application
+import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 import javax.inject.Singleton
 
 interface Listener<in T, in U> {
@@ -42,8 +44,13 @@ class RetrofitRequest(var application: Application) {
 
                         },
                         { error ->
+                            if(error is HttpException){
+
+                            }
+
                             if (error != null) {
-                                listener?.onError(error = error as U)
+
+//                                listener?.onError(error = error as U)
                             } else {
                                 listener?.onDeviceError(if (networkError.isNotEmpty()) networkError else error?.message!!)
                             }

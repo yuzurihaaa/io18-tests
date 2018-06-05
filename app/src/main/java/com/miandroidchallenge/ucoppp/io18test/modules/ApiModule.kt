@@ -12,6 +12,7 @@ import dagger.Provides
 import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -58,10 +59,16 @@ internal class ApiModule(var mBaseUrl: String, private val application: Applicat
     @Provides
     @Singleton
     fun provideOkhttpClient(cache: Cache): OkHttpClient {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()
-        client.networkInterceptors().add(REWRITE_CACHE_CONTROL_INTERCEPTOR())
-        client.addInterceptor(CurlLoggerInterceptor())
-        client.cache(cache)
+        client.let {
+            it.networkInterceptors().add(REWRITE_CACHE_CONTROL_INTERCEPTOR())
+            it.addInterceptor(CurlLoggerInterceptor())
+            it.addInterceptor(loggingInterceptor)
+            it.cache(cache)
+        }
+
         return client.build()
     }
 

@@ -85,6 +85,7 @@ dependencies {
     //OkHttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp_version"
     implementation "com.squareup.okio:okio:$rootProject.okio"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp_version"
 
     //Gson
     implementation "com.google.code.gson:gson:$rootProject.gson"
