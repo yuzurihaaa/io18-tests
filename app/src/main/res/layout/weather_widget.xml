@@ -10,7 +10,13 @@
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="80dp"
-        android:layout_height="80dp" />
+        android:layout_height="80dp"
+        android:backgroundTint="@android:color/transparent"
+        android:elevation="0dp"
+        android:src="@drawable/ic_cloud"
+        app:backgroundTint="@android:color/transparent"
+        app:borderWidth="0dp"
+        app:elevation="0dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
